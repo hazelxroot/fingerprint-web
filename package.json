@@ -1,0 +1,22 @@
+{
+  "name": "@musicube/fingerprint-web",
+  "version": "0.1.3",
+  "description": "client library for fingerprinting and tagging audio files in the browser",
+  "source": "./src/index.ts",
+  "main": "./dist/fingerprint-web.js",
+  "umd:main": "./dist/fingerprint-web.umd.js",
+  "module": "./dist/fingerprint-web.m.js",
+  "exports": {
+    "import": "./dist/fingerprint-web.modern.js",
+    "require": "./dist/fingerprint-web.js"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "prebuild": "rm -rf shared && mkdir shared && find ../../src/shared -name \"*.ts\" -exec cp {} ./shared \\;",
+    "build": "rm -rf dist && ../../node_modules/.bin/microbundle",
+    "postbuild": "echo \"export { default } from './src/index';\nexport * from './src/index'\" > dist/index.d.ts",
+    "prepare": "npm run build"
+  },
+  "author": "Hannes Diercks <hdiercks@musicu.be> (https://www.musicu.be/)",
+  "license": "MIT"
+}
